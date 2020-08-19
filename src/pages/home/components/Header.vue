@@ -1,8 +1,17 @@
 <template>
   <div class="header">
-    <div class="header-left">header</div>
-    <div class="header-middle"></div>
-    <div class="header-right"></div>
+    <div class="header-left">
+      <span class="iconfont">&#xe600;</span>
+    </div>
+    <div class="header-middle">
+      <span class="iconfont search-icon">&#xe614;</span>
+      <div class="kw">输入城市、景点、游玩主题</div>
+      <input class="header-input" type="text" />
+    </div>
+    <div class="header-right">
+      城市
+      <span class="iconfont">&#xe616;</span>
+    </div>
   </div>
 </template>
 
@@ -13,27 +22,53 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~styles/variables.styl'
+
 .header {
   display: flex;
   width: 100%;
   height: 0.88rem;
-  background-color: red;
+  color: #fff;
+  background-color: $bgColor;
 }
 
 .header .header-left {
   width: 0.8rem;
   height: 100%;
-  background-color: orange;
+  text-align: center;
+  line-height: 0.88rem;
 }
 
 .header .header-middle {
+  position: relative;
   flex: 1;
-  background-color: blue;
+  margin: 0.14rem 0;
+}
+
+.header .header-middle .search-icon {
+  position: absolute;
+  top: 0.13rem;
+  left: 0.2rem;
+  color: #e4e7ea;
+}
+
+.header .header-middle .kw {
+  position: absolute;
+  top: 0.16rem;
+  left: 0.6rem;
+  color: #e4e7ea;
+}
+
+.header .header-middle .header-input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.06rem;
 }
 
 .header .header-right {
-  width: 0.8rem;
+  width: 1.2rem;
   height: 100%;
-  background-color: green;
+  text-align: center;
+  line-height: 0.88rem;
 }
 </style>
