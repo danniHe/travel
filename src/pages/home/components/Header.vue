@@ -9,7 +9,7 @@
       <input class="header-input" type="text" />
     </div>
     <div class="header-right">
-      城市
+      {{this.city}}
       <span class="iconfont">&#xe616;</span>
     </div>
   </div>
@@ -18,11 +18,14 @@
 <script>
 export default {
   name: "HomeHeader",
+  props: {
+    city: String,
+  },
 };
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/variables.styl'
+@import '~styles/variables.styl';
 
 .header {
   display: flex;

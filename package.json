@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "fastclick": "^1.0.6",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
@@ -62,5 +63,16 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": ".postcssrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danniHe/travel.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danniHe/travel/issues"
+  },
+  "homepage": "https://github.com/danniHe/travel#readme"
 }

@@ -8,7 +8,7 @@
         tag="li"
         class="list-item"
         to="/detail"
-        v-for="item in recommendList"
+        v-for="item in this.recommendList"
         :key="item.id"
       >
         <div class="item-img">
@@ -43,51 +43,8 @@
 <script>
 export default {
   name: "HomeRecommend",
-  data: function () {
-    return {
-      recommendList: [
-        {
-          id: "001",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1709/28/288fbeccc335f774a3.img.jpg_200x200_4a81bde9.jpg",
-          tag: "可订明日",
-          title: "印象西湖印象西湖印象西湖印象西湖印象西湖",
-          commentNum: "7816",
-          price: "301",
-          district: "西湖",
-        },
-        {
-          id: "002",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/2006/79/7941d4e788e10832a3.img.jpg_200x200_d07c8cc3.jpg",
-          tag: "随买随用",
-          title: "宋城千古情",
-          commentNum: "24766",
-          price: "300",
-          district: "西湖区",
-        },
-        {
-          id: "003",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1603/38/38530bbf8ed47e490.water.jpg_200x200_b1556ec5.jpg",
-          tag: "可订今日",
-          title: "钱塘江夜游",
-          commentNum: "895",
-          price: "118",
-          district: "京杭大运...",
-        },
-        {
-          id: "004",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1603/38/38530bbf8ed47e490.water.jpg_200x200_b1556ec5.jpg",
-          tag: "可订今日",
-          title: "钱塘江夜游",
-          commentNum: "895",
-          price: "118",
-          district: "京杭大运...",
-        },
-      ],
-    };
+  props: {
+    recommendList: Array,
   },
 };
 </script>

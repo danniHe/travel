@@ -1,10 +1,10 @@
 <template>
   <div class="sw-wrapper">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="item in swiperList" :key="item.id">
+    <swiper :options="swiperOption" v-if="isSwiperShow">
+      <swiper-slide v-for="item in this.swiperList" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" />
-      </swiper-slide>     
-      
+      </swiper-slide>
+
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -13,20 +13,21 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props: {
+    swiperList: Array,
+  },
   data: function () {
     return {
       swiperOption: {
-        pagination: ".swiper-pagination",        
-        loop: true
+        pagination: ".swiper-pagination",
+        loop: true,
       },
-      swiperList: [{
-        id: '001',
-        imgUrl: '/static/img/1.jpg'
-      },{
-        id: '002',
-        imgUrl: '/static/img/2.jpg'
-      }],      
     };
+  },
+  computed: {
+    isSwiperShow: function () {
+      return this.swiperList.length;
+    },
   },
 };
 </script>
@@ -41,9 +42,10 @@ export default {
   width: 100%;
   height: 0;
   // 100/375 = 0.26666`
-  padding-bottom: 26.67%;  
+  padding-bottom: 26.67%;
   background: #eee;
 }
+
 // 图片大小：375*100
 .sw-wrapper .swiper-img {
   width: 100%;
