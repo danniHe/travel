@@ -6,7 +6,7 @@
         tag="li"
         class="list-item"
         to="/detail"
-        v-for="item in this.weekendList"
+        v-for="item in weekendList"
         :key="item.id"
       >
         <div class="item-img">
@@ -25,8 +25,8 @@
 export default {
   name: "HomeWeekend",
   props: {
-    weekendList: Array
-  }
+    weekendList: Array,
+  },
 };
 </script>
 
@@ -50,15 +50,15 @@ div {
 .list-item .item-img {
   width: 100%;
   height: 0;
-  padding-bottom: 37.1%;  
+  padding-bottom: 37.1%;
 }
 
 .list-item .item-img img {
-  width: 100%;  
+  width: 100%;
 }
 
-.list-item .item-info {  
-  padding: 0.14rem 0.2rem .2rem; 
+.list-item .item-info {
+  padding: 0.14rem 0.2rem 0.2rem;
 }
 
 .list-item .item-info .info-title {
@@ -69,12 +69,12 @@ div {
   ellipsis();
 }
 
-.list-item .item-info .info-desc{
+.list-item .item-info .info-desc {
   width: 100%;
   padding-right: 1.4rem;
-  height: .42rem;
-  line-height : .42rem;
-  font-size: .24rem;
+  height: 0.42rem;
+  line-height: 0.42rem;
+  font-size: 0.24rem;
   color: $lightTxtColor;
   ellipsis();
 }
