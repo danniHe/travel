@@ -8,19 +8,28 @@
             v-for="item in computedHotCities"
             :key="item.id"
             :class="item.borderType"
+            @click="handleCityClick(item.name)"
           >{{item.name}}</li>
         </ul>
       </div>
       <div class="alhpabet-menu">
         <div class="alhpabet-menu-tt">字母排序</div>
         <ul class="clearfix">
-          <li v-for="item in cities" :key="item.initial" @click="handleAlhpabetClick">{{item.initial}}</li>
+          <li
+            v-for="item in cities"
+            :key="item.initial"
+            @click="handleAlhpabetClick"
+          >{{item.initial}}</li>
         </ul>
       </div>
       <div class="alhpabet-list" v-for="item in cities" :key="item.initial" :ref="item.initial">
         <div class="alhpabet-list-tt">{{item.initial}}</div>
         <ul class="clearfix">
-          <li v-for="(innerItem, key) in item.list" :key="key">{{innerItem.name}}</li>
+          <li
+            v-for="(innerItem, key) in item.list"
+            :key="key"
+            @click="handleCityClick(innerItem.name)"
+          >{{innerItem.name}}</li>
         </ul>
       </div>
     </div>
@@ -29,6 +38,7 @@
 
 <script>
 import BScroll from "better-scroll";
+import { mapMutations } from "vuex";
 
 export default {
   name: "CityList",
@@ -36,15 +46,24 @@ export default {
     hotCities: Array,
     cities: Array,
   },
-  data: function(){
+  data: function () {
     return {
-      letter: ''
-    }
+      letter: "",
+    };
   },
   methods: {
-    handleAlhpabetClick: function(e){
-      this.letter = e.target.innerText;      
-    }
+    handleAlhpabetClick: function (e) {
+      this.letter = e.target.innerText;
+    },
+    handleCityClick: function (city) {
+      // this.$store.commit("changeCityName", city);
+      this.changeCityName(city);
+      this.$router.push({ path: "/" });
+    },
+    // this.changeCityName 隐射成 this.$store.commit
+    ...mapMutations({
+      changeCityName: 'changeCityName'
+    })
   },
   computed: {
     computedHotCities: function () {
@@ -69,18 +88,18 @@ export default {
         }
       }
       return res;
-    }
+    },
   },
   mounted: function () {
     this.scroll = new BScroll(".listWrapper");
-    // this.scroll = new BScroll(this.$refs.listWrapper)    
+    // this.scroll = new BScroll(this.$refs.listWrapper)
   },
   watch: {
-    letter: function(){
+    letter: function () {
       var el = this.$refs[this.letter][0];
       this.scroll.scrollToElement(el);
-    }
-  }
+    },
+  },
 };
 </script>
 
