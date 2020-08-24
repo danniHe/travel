@@ -28,12 +28,12 @@ export default {
   },
   computed: {
     ...mapState({
-      curCity: 'city'
-    })
+      curCity: "city",
+    }),
   },
   data: function () {
     return {
-      lastCity: '',      
+      lastCity: "",
       swiperList: [],
       iconList: [],
       recommendList: [],

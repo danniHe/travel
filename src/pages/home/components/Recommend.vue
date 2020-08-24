@@ -7,7 +7,7 @@
       <router-link
         tag="li"
         class="list-item"
-        to="/detail"
+        :to="'/detail/' + item.id"
         v-for="item in recommendList"
         :key="item.id"
       >
@@ -19,11 +19,11 @@
           <div class="inner-box">
             <div class="info-title">{{item.title}}</div>
             <div class="info-comment">
-              <span class="iconfont icon-star">&#xe604;</span>
-              <span class="iconfont icon-star">&#xe604;</span>
-              <span class="iconfont icon-star">&#xe604;</span>
-              <span class="iconfont icon-star">&#xe604;</span>
-              <span class="iconfont icon-star">&#xe604;</span>
+              <span class="iconfont icon-star">&#xe6b9;</span>
+              <span class="iconfont icon-star">&#xe6b9;</span>
+              <span class="iconfont icon-star">&#xe6b9;</span>
+              <span class="iconfont icon-star">&#xe6b9;</span>
+              <span class="iconfont icon-star">&#xe6b9;</span>
               <span class="comment-num">{{item.commentNum}}条评论</span>
             </div>
             <div class="info-price">
