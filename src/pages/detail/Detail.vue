@@ -63,6 +63,6 @@ export default {
 
 <style lang="stylus" scoped>
 .content-box {
-  height: 50rem;
+  height: 20rem;
 }
 </style>

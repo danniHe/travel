@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="banner" @click="handleBannerClick">
-      <img
-        class="banner-img"
-        :src="bannerImg"
-        alt
-      />
+      <img class="banner-img" :src="bannerImg" alt />
       <div class="banner-info">
         <div class="banner-num">
           <span class="iconfont">&#xe612;</span>
@@ -14,25 +10,33 @@
         <div class="banner-tt">{{sightName}}</div>
       </div>
     </div>
-    <common-gallery :img-list="galleryImgs" v-show="isGalleryShow" @closeGallery="handleGalleryClose"></common-gallery>
+    <common-fade>
+      <common-gallery
+        :img-list="galleryImgs"
+        v-show="isGalleryShow"
+        @closeGallery="handleGalleryClose"
+      ></common-gallery>
+    </common-fade>
   </div>
 </template>
 
 <script>
 import CommonGallery from "common/gallery/Gallery";
+import CommonFade from "common/fade/Fade";
 export default {
   name: "DetailBanner",
   props: {
     sightName: String,
     bannerImg: String,
-    galleryImgs: Array
+    galleryImgs: Array,
   },
   components: {
     "common-gallery": CommonGallery,
+    "common-fade": CommonFade,
   },
   data: function () {
     return {
-      isGalleryShow: false,      
+      isGalleryShow: false,
     };
   },
   methods: {
