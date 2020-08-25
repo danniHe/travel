@@ -68,11 +68,12 @@ export default {
   left: 0;
   right: 0;
   height: 0.88rem;
-  line-height: 0.88rem;
+  line-height: 0.88rem;  
   color: #fff;
   text-align: center;
   font-size: 0.36rem;
   background-color: $bgColor;
+  z-index: 3;
 }
 
 .header .header-left {
