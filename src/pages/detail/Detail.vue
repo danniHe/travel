@@ -1,15 +1,20 @@
 <template>
   <div>
-    <detail-banner></detail-banner>
+    <detail-banner 
+      :sightName="sightName" 
+      :bannerImg="bannerImg"
+      :galleryImgs="galleryImgs"
+    ></detail-banner>
     <detail-header></detail-header>
 
     <div class="content-box">
-      <detail-list :list="list"></detail-list>
+      <detail-list :list="categoryList"></detail-list>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import DetailBanner from "./components/Banner";
 import DetailHeader from "./components/Header";
 import DetailList from "./components/List";
@@ -23,35 +28,35 @@ export default {
   },
   data: function () {
     return {
-      list: [
-        {
-          title: "促销",
-          children: [
-            {
-              title: "最忆是杭州",
-            },
-            {
-              title: "杭州口袋屋蹦床",
-            },
-            {
-              title: "西湖外事游船",
-            },
-          ],
-        },
-        {
-          title: "门票",
-        },
-        {
-          title: "促销",
-        },
-        {
-          title: "促销",
-        },
-        {
-          title: "促销",
-        },
-      ],
+      sightName: '',
+      bannerImg: '',
+      galleryImgs: [],
+      categoryList: []
     };
+  },
+  methods: {
+    getDetailInfo: function () {
+      // axios.get("/api/detail.json?id=" + this.$route.params.id).then();
+      axios
+        .get("/api/detail.json", {
+          params: {
+            id: this.$route.params.id,
+          },
+        })
+        .then(this.getDetailInfoSuccess);
+    },
+    getDetailInfoSuccess: function (res) {
+      if (res.data.ret && res.data.data) {
+        var data = res.data.data;
+        this.sightName = data.sightName;
+        this.bannerImg = data.bannerImg;
+        this.galleryImgs = data.galleryImgs;
+        this.categoryList = data.categoryList;
+      }
+    },
+  },
+  mounted: function () {
+    this.getDetailInfo();
   },
 };
 </script>

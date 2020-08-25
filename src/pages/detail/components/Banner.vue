@@ -3,17 +3,18 @@
     <div class="banner" @click="handleBannerClick">
       <img
         class="banner-img"
-        src="//img1.qunarzz.com/sight/p0/1709/28/288fbeccc335f774a3.img.jpg_600x330_7511d912.jpg"
+        :src="bannerImg"
         alt
       />
       <div class="banner-info">
         <div class="banner-num">
-          <span class="iconfont">&#xe612;</span>11
+          <span class="iconfont">&#xe612;</span>
+          <span>{{galleryImgs.length}}</span>
         </div>
-        <div class="banner-tt">印象西湖</div>
+        <div class="banner-tt">{{sightName}}</div>
       </div>
     </div>
-    <common-gallery :img-list="imgList" v-show="isGalleryShow" @closeGallery="handleGalleryClose"></common-gallery>
+    <common-gallery :img-list="galleryImgs" v-show="isGalleryShow" @closeGallery="handleGalleryClose"></common-gallery>
   </div>
 </template>
 
@@ -21,16 +22,17 @@
 import CommonGallery from "common/gallery/Gallery";
 export default {
   name: "DetailBanner",
+  props: {
+    sightName: String,
+    bannerImg: String,
+    galleryImgs: Array
+  },
   components: {
     "common-gallery": CommonGallery,
   },
   data: function () {
     return {
-      isGalleryShow: false,
-      imgList: [
-        "//img1.qunarzz.com/sight/p0/1709/28/288fbeccc335f774a3.img.jpg_600x330_7511d912.jpg",
-        "http://img1.qunarzz.com/sight/p0/1709/93/939774ae36224b64a3.img.jpg_350x240_53357927.jpg",
-      ],
+      isGalleryShow: false,      
     };
   },
   methods: {
